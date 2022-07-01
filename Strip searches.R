@@ -3,6 +3,7 @@ library(tidyverse)
 
 download.file("https://policeuk-data.s3.amazonaws.com/download/eab6c85b27769b194bb3127dc4df808b2f948098.zip", 
               'StripSearches.zip')
+unzip('StripSearches.zip')
 files <- unzip('StripSearches.zip', list=TRUE)[[1]]
 d3 <- map_df(files, ~vroom(.x, id = "file_name"))
 d3$date <- substr(d3$file_name,1,7)
